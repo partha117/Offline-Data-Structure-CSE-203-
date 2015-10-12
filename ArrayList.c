@@ -49,7 +49,7 @@ int insertItem(int newitem)
         }
         free(list) ; //free the memory allocated before
         list = tempList ; //make list to point to new memory
-	};
+	}
 
 	list[length] = newitem ; //store new item
 	length++ ;
@@ -140,12 +140,13 @@ int insertItemAt(int pos, int item)
 }
 int shrink(void)
 {
-    if(length==LIST_INIT_SIZE)
+    if(listMaxSize<=LIST_INIT_SIZE)
     {
         return NULL_VALUE;
     }
-    else if(length<=(listMaxSize/2))
+    for(;(length<=(listMaxSize/2))&&(listMaxSize>=LIST_INIT_SIZE);)//for loop used to be used in deleteAll
     {
+
         int *tempList;
         listMaxSize = listMaxSize/2 ;
 		tempList = (int*) malloc (listMaxSize*sizeof(int)) ;
@@ -156,9 +157,9 @@ int shrink(void)
         }
         free(list) ;
         list = tempList ;
-        return SUCCESS_VALUE;
+
     }
-    return NULL_VALUE;
+    return SUCCESS_VALUE;
 }
 int deleteLast(void)
 {
@@ -170,7 +171,7 @@ int deleteLast(void)
     c=list[length-1];
 
     length--;
-    //shrink();
+    shrink();
     return c;
 }
 int clear()
@@ -185,15 +186,13 @@ int clear()
 }
 int deleteAll()
 {
-    if(length>LIST_INIT_SIZE)
-    {
-        free(list);
-        list=(int*)malloc(sizeof(int)*LIST_INIT_SIZE);
-    }
-    listMaxSize = LIST_INIT_SIZE;
     length=0;
+    shrink();
+    listMaxSize = LIST_INIT_SIZE;
+
     return SUCCESS_VALUE;
 }
+/*
 int main(void)//Main function for Task 1-6
 {
     initializeList();
@@ -249,7 +248,7 @@ int main(void)//Main function for Task 1-6
     }
 
 }
-/*
+*/
 int main()//Main function for task 7
 {
 
@@ -316,7 +315,7 @@ int main()//Main function for task 7
         }
     }
     return 0;
-}*/
+}
 
 
 
