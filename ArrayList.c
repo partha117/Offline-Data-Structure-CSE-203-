@@ -192,14 +192,14 @@ int deleteAll()
 
     return SUCCESS_VALUE;
 }
-/*
+
 int main(void)//Main function for Task 1-6
 {
     initializeList();
     while(1)
     {
-        printf("1. Insert new item.\n2. Delete item at.\n3. Delete item.\n");
-        printf("4. Delete last.\n5. Clear.\n6. Delete all.\n7. Print.\n8. exit.\n");
+        printf("1. Insert new item.\n2. Delete item at.\n3. Delete item.\n4. Insert Item at Position.\n");
+        printf("5. Delete last.\n6. Clear.\n7. Delete all.\n8. Print.\n9. exit.\n");
 
         int ch;
         scanf("%d",&ch);
@@ -223,21 +223,27 @@ int main(void)//Main function for Task 1-6
         }
         else if(ch==4)
         {
-            deleteLast();
+            int item,pos;
+            scanf("%d%d",&item,&pos);
+            insertItemAt(pos,item);
         }
         else if(ch==5)
         {
-            clear();
+            deleteLast();
         }
         else if(ch==6)
         {
-            deleteAll();
+            clear();
         }
         else if(ch==7)
         {
-            printList();
+            deleteAll();
         }
         else if(ch==8)
+        {
+            printList();
+        }
+        else if(ch==9)
         {
             if(list!=0)
             {
@@ -248,7 +254,7 @@ int main(void)//Main function for Task 1-6
     }
 
 }
-*/
+/*
 int main()//Main function for task 7
 {
 
@@ -315,7 +321,7 @@ int main()//Main function for task 7
         }
     }
     return 0;
-}
+}*/
 
 
 
